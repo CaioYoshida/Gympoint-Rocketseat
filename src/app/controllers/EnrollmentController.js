@@ -1,12 +1,12 @@
 import * as Yup from 'yup';
-import { addMonths, parseISO, format } from 'date-fns';
-import pt from 'date-fns/locale/pt';
+import { addMonths, parseISO } from 'date-fns';
 
 import Student from '../models/Student';
 import Membership from '../models/Membership';
 import Enrollment from '../models/Enrollment';
 
-import Mail from '../../lib/Mail';
+import EnrollmentMail from '../jobs/EnrollmentMail';
+import Queue from '../../lib/Queue';
 
 class EnrollmentController {
   async index(req, res) {
@@ -116,31 +116,10 @@ class EnrollmentController {
       price: total_price,
     });
 
-    const formatted_start_date = format(
-      enrollment.start_date,
-      "dd 'de' MMMM 'de' yyyy",
-      { locale: pt }
-    );
-
-    const formatted_end_date = format(
-      enrollment.end_date,
-      "dd 'de' MMMM 'de' yyyy",
-      { locale: pt }
-    );
-
-    await Mail.sendMail({
-      to: `${isStudent.name} <${isStudent.email}>`,
-      subject: 'Bem vindo ao Gympoint',
-      template: 'enrollmentConfirmation',
-      context: {
-        student_name: isStudent.name,
-        enrollment: enrollment.id,
-        membership_title: isMembership.title,
-        membership_duration: isMembership.duration,
-        membership_price: isMembership.price,
-        enrollment_start_date: formatted_start_date,
-        enrollment_end_date: formatted_end_date,
-      },
+    await Queue.add(EnrollmentMail.key, {
+      enrollment,
+      isStudent,
+      isMembership,
     });
 
     return res.json(enrollment);
