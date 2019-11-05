@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import Student from '../models/Student';
 
-class UserController {
+class StudentController {
   async index(req, res) {
     const students = await Student.findAll();
 
@@ -95,4 +95,4 @@ class UserController {
   }
 }
 
-export default new UserController();
+export default new StudentController();
