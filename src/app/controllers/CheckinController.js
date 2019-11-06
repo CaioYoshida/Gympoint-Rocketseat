@@ -5,6 +5,18 @@ import Enrollment from '../models/Enrollment';
 import Checkin from '../models/Checkin';
 
 class CheckinController {
+  async index(req, res) {
+    const student_id = req.params.id;
+
+    const checkins = await Checkin.findAll({
+      where: {
+        student_id,
+      },
+    });
+
+    return res.json(checkins);
+  }
+
   async store(req, res) {
     /**
      * Student's validation
