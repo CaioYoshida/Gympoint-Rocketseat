@@ -10,7 +10,7 @@ class EnrollmentMail {
   async handle({ data }) {
     const { isStudent, isMembership, enrollment } = data;
 
-    console.log('A fila executou');
+    console.log(isStudent.name);
 
     await Mail.sendMail({
       to: `${isStudent.name} <${isStudent.email}>`,
