@@ -4,6 +4,9 @@ import Student from '../models/Student';
 class Help_orderController {
   async index(req, res) {
     const help_orders = await Help_order.findAll({
+      where: {
+        answer: null,
+      },
       include: [
         {
           model: Student,
@@ -11,6 +14,7 @@ class Help_orderController {
           attributes: ['id', 'name', 'email'],
         },
       ],
+      order: [['id', 'ASC']],
     });
 
     return res.json(help_orders);
@@ -23,6 +27,7 @@ class Help_orderController {
       where: {
         student_id,
       },
+      order: [['id', 'ASC']],
     });
 
     return res.json(help_orders);
