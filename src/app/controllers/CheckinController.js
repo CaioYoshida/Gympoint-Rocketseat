@@ -40,6 +40,10 @@ class CheckinController {
       },
     });
 
+    if (!end_date) {
+      return res.status(400).json({ error: 'There is no enrollment attached' });
+    }
+
     const checkinAvailable = isBefore(checkinDate, end_date);
 
     if (!checkinAvailable) {

@@ -1,8 +1,23 @@
 import * as Yup from 'yup';
+import { Op } from 'sequelize';
 import Student from '../models/Student';
 
 class StudentController {
   async index(req, res) {
+    const { name } = req.query;
+
+    if (name) {
+      const students = await Student.findAll({
+        where: {
+          name: {
+            [Op.startsWith]: name,
+          },
+        },
+      });
+
+      return res.json(students);
+    }
+
     const students = await Student.findAll();
 
     return res.json(students);
@@ -10,6 +25,12 @@ class StudentController {
 
   async show(req, res) {
     const student = await Student.findByPk(req.params.id);
+
+    if (!student) {
+      return res
+        .status(400)
+        .json({ error: 'There is no student with this ID' });
+    }
 
     return res.json(student);
   }

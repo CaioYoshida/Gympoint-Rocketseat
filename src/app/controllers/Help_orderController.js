@@ -3,6 +3,20 @@ import Student from '../models/Student';
 
 class Help_orderController {
   async index(req, res) {
+    const help_orders = await Help_order.findAll({
+      include: [
+        {
+          model: Student,
+          as: 'student',
+          attributes: ['id', 'name', 'email'],
+        },
+      ],
+    });
+
+    return res.json(help_orders);
+  }
+
+  async indexPerStudents(req, res) {
     const student_id = req.params.id;
 
     const help_orders = await Help_order.findAll({
