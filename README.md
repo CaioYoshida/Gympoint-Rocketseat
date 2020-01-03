@@ -28,7 +28,7 @@ app.listen(3333, () => {
 
 <h4>Terceiro Passo: Definindo variáveis ambiente</h4>
 
-O banco de dados utilizado foi do tipo SQL, mais precisamente o 'PostgresSQL', mas também foi necessário a utilização de um banco de dados chave-valor, neste caso o 'Redis' para a elaboração da 'queue' com o intuito de ordenar o envio de e-mails através do backend. E falando em e-mails, foi utilizado uma ferramenta para testar o envio destes, o 'MailTrap'. Para ter acesso ao 'MailTrap' é necessário a criação de uma conta grátis e assim os dados para a conexão com o servidor serão disponibilizados.
+O banco de dados utilizado foi do tipo SQL, mais precisamente o 'Postgres', mas também foi necessário a utilização de um banco de dados chave-valor, neste caso o 'Redis' para a elaboração da 'queue' com o intuito de ordenar o envio de e-mails através do backend. E falando em e-mails, foi utilizado uma ferramenta para testar o envio destes, o 'MailTrap'. Para ter acesso ao 'MailTrap' é necessário a criação de uma conta grátis e assim os dados para a conexão com o servidor serão disponibilizados.
 
 No quesito segurança, foi inserido uma rotina (mais precisamente um middleware) para a validação dos dados de log do usuário atrvés da ferramenta JWT.
 
