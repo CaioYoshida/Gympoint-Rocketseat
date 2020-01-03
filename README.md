@@ -150,7 +150,7 @@ REACTOTRON_HOST= // O ip da sua máquina
 AXIOS_URL= // 'http://10.0.2.2:(porta do servidor)' se estiver utilizando Android Studio, senão http://localhost:(porta do servidor)
 ```
 
-<h4>Teceiro passo: Iniciando aplicativo no simulador/h4>
+<h4>Teceiro passo: Iniciando aplicativo no simulador</h4>
   
  Novamente abra o terminal e acesse a pasta raiz do projeto. Agora vamos digitar o código abaixo:
  
@@ -158,6 +158,10 @@ AXIOS_URL= // 'http://10.0.2.2:(porta do servidor)' se estiver utilizando Androi
  react-native run-android
  ```
  
- Este comando somente funciona para rodar o app no Android.
+ Este comando somente funciona para rodar o app no Android e isto deve ser o suficiente para o aplicativo rodar no seu dispositivo. No entanto após rodar o comando acima uma vez, não é necessário executá-lo toda vez que quiser iniciar a aplicação novamente, ao invés disso, você pode inserir o código abaixo no terminal:
+ 
+ ```
+ react-native start
+ ```
 
 
