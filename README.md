@@ -16,7 +16,7 @@ Com isso a pasta 'node_modules' será baixada e com ela todas as dependências d
 
 <h4>Segundo Passo: Definindo porta do servidor</h4>
 
-No backend da aplicação todas as funcionalidades obrigatórias foram inseridas no código. A chamadas API foram feitas através do axios utilizando a porta local 3333. No entanto se esta porta estiver já estiver em uso você pode alterá-la para o que lhe for mais conveniente.
+No backend da aplicação foi utlizado a porta local 3333 para ouvir as requisições. No entanto se esta porta estiver já estiver em uso você pode alterá-la para o que lhe for mais conveniente.
 
 ```
 import app from './app';
@@ -84,3 +84,80 @@ O segundo terminal servirá para inicializar o Redis através do comando abaixo:
 ```
 yarn queue
 ```
+
+<h3>Frontend</h3>
+
+<h4>Primeiro passo: Baixar as dependências</h4>
+
+Após clonar ou baixar a código, acesse a pasta raiz pelo terminal e digite o seguinte comando.
+
+```
+yarn
+```
+
+Com isso a pasta 'node_modules' será baixada e com ela todas as dependências do seu projeto.
+
+<h4>Segundo Passo: Definindo base_url do axios</h4>
+
+A chamadas API foram feitas através do axios utilizando a baseURL:http://localhost3333. No entanto se esta porta estiver já estiver em uso você pode alterá-la para o que lhe for mais conveniente dentro de src/services/api.js
+
+```
+import axios from 'axios';
+
+const api = axios.create({
+  baseURL: 'http://localhost:3333',
+});
+
+export default api;
+```
+
+<h4>Terceiro Passo: Iniciando aplicação</h4>
+
+Por fim, deve abrir o terminal e na pasta raiz digitar o código abaixo:
+```
+yarn start
+```
+
+Lembrando que o aplicativo foi testado somente com o navegador Chrome da Google.
+
+<h3>Mobile</h3>
+
+<h4>Primeiro passo: Baixar as dependências</h4>
+
+Após clonar ou baixar a código, acesse a pasta raiz pelo terminal e digite o seguinte comando.
+
+```
+yarn
+```
+
+Com isso a pasta 'node_modules' será baixada e com ela todas as dependências do seu projeto.
+
+<h4>Segundo passo: Definindo as variáveis ambiente/h4>
+  
+Assim como no frontend, nós também utilizamos uma porta local para conexão com o backend, no entanto, como no meu caso eu simulei um dispositivo android somente através do Android Studio, a baseURL obrigatóriamente é http://10.0.2.2:(a porta do servidor backend)
+
+Já em relação às configurações do Reactotron, também temos uma particularidade quando utilizamos o sistema operacional android. É recomendado passar o ip da sua máquina dentro das configurações do Reactotron.
+
+Portanto será necessário criar um arquivo .env e nele passar os seus dados. Dentro o projeto há o arquivo .env.example para você copiar e inserir seus parâmetros.
+
+```
+# Reactotron
+
+REACTOTRON_HOST= // O ip da sua máquina
+
+# Axios
+
+AXIOS_URL= // 'http://10.0.2.2:(porta do servidor)' se estiver utilizando Android Studio, senão http://localhost:(porta do servidor)
+```
+
+<h4>Teceiro passo: Iniciando aplicativo no simulador/h4>
+  
+ Novamente abra o terminal e acesse a pasta raiz do projeto. Agora vamos digitar o código abaixo:
+ 
+ ```
+ react-native run-android
+ ```
+ 
+ Este comando somente funciona para rodar o app no Android.
+
+
