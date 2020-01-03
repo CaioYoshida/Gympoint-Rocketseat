@@ -132,7 +132,7 @@ yarn
 
 Com isso a pasta 'node_modules' será baixada e com ela todas as dependências do seu projeto.
 
-<h4>Segundo passo: Definindo as variáveis ambiente/h4>
+<h4>Segundo passo: Definindo as variáveis ambiente</h4>
   
 Assim como no frontend, nós também utilizamos uma porta local para conexão com o backend, no entanto, como no meu caso eu simulei um dispositivo android somente através do Android Studio, a baseURL obrigatóriamente é http://10.0.2.2:(a porta do servidor backend)
 
