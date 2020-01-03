@@ -120,6 +120,13 @@ yarn start
 
 Lembrando que o aplicativo foi testado somente com o navegador Chrome da Google.
 
+<h4>Observação</h4>
+
+Para entrar no aplicativo web é necessário ser um usuário cadastrado. E este usuário inicial foi inserido no banco de dados quando fizemos o envio dos seeds.
+
+usuário: admin@gympoint.com
+senha: 123456
+
 <h3>Mobile</h3>
 
 <h4>Primeiro passo: Baixar as dependências</h4>
